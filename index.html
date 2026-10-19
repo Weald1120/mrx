@@ -133,6 +133,7 @@
 
       // 关键修复：src 直接写在标签上，不在点击时才赋值
       // 微信内置浏览器里"运行时赋值 + 立即 play()"会静默失败
+      // preload 用 none：首屏不预载 9 个视频，只加载封面，弱网下更稳
       var video = document.createElement("video");
       video.setAttribute("controls", "");
       video.setAttribute("controlsList", "nodownload");
@@ -141,7 +142,7 @@
       video.setAttribute("x5-playsinline", "true");
       video.setAttribute("x5-video-player-type", "h5");
       video.setAttribute("x5-video-player-fullscreen", "true");
-      video.setAttribute("preload", "metadata");
+      video.setAttribute("preload", "none");
       video.setAttribute("poster", item.poster);
       video.setAttribute("src", item.src);
 
