@@ -1,17 +1,32 @@
 window.BATCHES = [
   {
-    label: "10.19",
-    count: 9,
+    label: "强烈建议拍摄",
+    count: 13,
+    badge: "主推",
     items: [
-      { src: "videos/10.19/13436847556196455.mp4", poster: "covers/10.19/01.jpg" },
-      { src: "videos/10.19/13436415027654464.mp4", poster: "covers/10.19/02.jpg" },
-      { src: "videos/10.19/13436415355772924.mp4", poster: "covers/10.19/03.jpg" },
-      { src: "videos/10.19/13436415367049418.mp4", poster: "covers/10.19/04.jpg" },
-      { src: "videos/10.19/13436415833851757.mp4", poster: "covers/10.19/05.jpg" },
-      { src: "videos/10.19/13436418179979617.mp4", poster: "covers/10.19/06.jpg" },
-      { src: "videos/10.19/13436588929660110.mp4", poster: "covers/10.19/07.jpg" },
-      { src: "videos/10.19/13436589126839013.mp4", poster: "covers/10.19/08.jpg" },
-      { src: "videos/10.19/13436589139192554.mp4", poster: "covers/10.19/09.jpg" },
+      { src: "videos/must-shoot/01.mp4", poster: "covers/must-shoot/01.jpg" },
+      { src: "videos/must-shoot/02.mp4", poster: "covers/must-shoot/02.jpg" },
+      { src: "videos/must-shoot/03.mp4", poster: "covers/must-shoot/03.jpg" },
+      { src: "videos/must-shoot/04.mp4", poster: "covers/must-shoot/04.jpg" },
+      { src: "videos/must-shoot/05.mp4", poster: "covers/must-shoot/05.jpg" },
+      { src: "videos/must-shoot/06.mp4", poster: "covers/must-shoot/06.jpg" },
+      { src: "videos/must-shoot/07.mp4", poster: "covers/must-shoot/07.jpg" },
+      { src: "videos/must-shoot/08.mp4", poster: "covers/must-shoot/08.jpg" },
+      { src: "videos/must-shoot/09.mp4", poster: "covers/must-shoot/09.jpg" },
+      { src: "videos/must-shoot/10.mp4", poster: "covers/must-shoot/10.jpg" },
+      { src: "videos/must-shoot/11.mp4", poster: "covers/must-shoot/11.jpg" },
+      { src: "videos/must-shoot/12.mp4", poster: "covers/must-shoot/12.jpg" },
+      { src: "videos/must-shoot/13.mp4", poster: "covers/must-shoot/13.jpg" },
+    ]
+  },
+  {
+    label: "泛视频，偶尔发",
+    count: 3,
+    badge: "",
+    items: [
+      { src: "videos/casual/01.mp4", poster: "covers/casual/01.jpg" },
+      { src: "videos/casual/02.mp4", poster: "covers/casual/02.jpg" },
+      { src: "videos/casual/03.mp4", poster: "covers/casual/03.jpg" },
     ]
   },
 ];

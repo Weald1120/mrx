@@ -116,7 +116,7 @@
     head.innerHTML =
       '<span class="bar"></span>' +
       "<h2>" + batch.label + "</h2>" +
-      (bi === 0 ? '<span class="badge">最新</span>' : "") +
+      (batch.badge ? '<span class="badge">' + batch.badge + "</span>" : "") +
       '<span class="cnt">' + batch.count + " 条</span>";
     sec.appendChild(head);
 
