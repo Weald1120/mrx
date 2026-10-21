@@ -1,7 +1,7 @@
 window.BATCHES = [
   {
     label: "强烈建议拍摄",
-    count: 13,
+    count: 15,
     badge: "主推",
     items: [
       { src: "videos/must-shoot/01.mp4", poster: "covers/must-shoot/01.jpg" },
@@ -17,6 +17,18 @@ window.BATCHES = [
       { src: "videos/must-shoot/11.mp4", poster: "covers/must-shoot/11.jpg" },
       { src: "videos/must-shoot/12.mp4", poster: "covers/must-shoot/12.jpg" },
       { src: "videos/must-shoot/13.mp4", poster: "covers/must-shoot/13.jpg" },
+      { src: "videos/must-shoot/14.mp4", poster: "covers/must-shoot/14.jpg" },
+      { src: "videos/must-shoot/15.mp4", poster: "covers/must-shoot/15.jpg" },
+    ]
+  },
+  {
+    label: "减脂逆袭",
+    count: 3,
+    badge: "",
+    items: [
+      { src: "videos/slim/01.mp4", poster: "covers/slim/01.jpg" },
+      { src: "videos/slim/02.mp4", poster: "covers/slim/02.jpg" },
+      { src: "videos/slim/03.mp4", poster: "covers/slim/03.jpg" },
     ]
   },
   {
