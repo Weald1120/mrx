@@ -81,6 +81,21 @@
 
   footer{text-align:center;font-size:11px;color:#8A8496;margin-top:20px;opacity:.75}
 
+  /* 「新」角标：左上角，不拦截点击，位置内缩避免被圆角切到 */
+  .new-tag{
+    position:absolute;top:6px;left:6px;z-index:2;
+    display:inline-block;
+    font-size:10px;font-weight:700;line-height:1;color:#fff;
+    letter-spacing:.5px;
+    padding:4px 5px;
+    background:linear-gradient(135deg,#FF2E4D 0%,#FF6A3D 100%);
+    border-radius:8px 8px 8px 2px;
+    box-shadow:0 1px 4px rgba(0,0,0,.3);
+    pointer-events:none;
+  }
+
+  .updated{color:#FF4A2E;font-weight:700}
+
   @media(min-width:700px){
     .wrap{padding:0 20px 40px}
     header{margin:0 -20px 4px}
@@ -91,7 +106,7 @@
 <div class="wrap">
   <header>
     <h1>迷人秀对标视频</h1>
-    <p>点视频上的播放键即可观看 · 共 <span id="total">0</span> 条</p>
+    <p>点视频上的播放键即可观看 · 共 <span id="total">0</span> 条<span id="newline"></span></p>
   </header>
 
   <div id="sections"></div>
@@ -155,6 +170,15 @@
       });
 
       cell.appendChild(video);
+
+      // 本轮新增的标「新」，证明是这次更新才发的对标视频
+      if (item.isNew) {
+        var tag = document.createElement("span");
+        tag.className = "new-tag";
+        tag.textContent = "新";
+        cell.appendChild(tag);
+      }
+
       wrap.appendChild(cell);
       grid.appendChild(wrap);
     });
@@ -163,6 +187,15 @@
   });
 
   document.getElementById("total").textContent = total;
+
+  // 页头补充「本轮更新」信息，让代理一眼看出有新内容
+  var NEW_COUNT = window.NEW_COUNT || 0;
+  if (NEW_COUNT > 0) {
+    var d = window.UPDATED || "";
+    var short = d.length === 10 ? d.slice(5) : d;
+    document.getElementById("newline").innerHTML =
+      " · " + short + " 更新，<span class=\"updated\">新增 " + NEW_COUNT + " 条</span>";
+  }
 </script>
 </body>
 </html>
