@@ -27,7 +27,52 @@
   header h1{font-size:19px;font-weight:700;letter-spacing:-.3px;margin-bottom:2px}
   header p{font-size:12px;opacity:.85}
 
-  .sec{padding-top:14px}
+  /* 两页切换标签 */
+  .tabs{display:flex;gap:8px;padding:10px 4px 2px}
+  .tab{
+    flex:1;text-align:center;font-size:13px;font-weight:700;text-decoration:none;
+    padding:9px 0;border-radius:10px;color:#7A7288;background:#EDE8F6;
+  }
+  .tab.active{color:#fff;background:linear-gradient(135deg,var(--purple),var(--purple-light))}
+
+  /* ---------- 分类选择页 ---------- */
+  .cat-hint{font-size:12.5px;color:#8A8496;padding:12px 6px 10px}
+  .cat{
+    display:flex;align-items:center;gap:12px;
+    background:#fff;border-radius:14px;padding:18px 14px;margin-bottom:10px;
+    box-shadow:0 1px 4px rgba(74,29,143,.08);cursor:pointer;
+  }
+  .cat:active{transform:scale(.985)}
+  .cat-icon{
+    flex-shrink:0;width:44px;height:44px;border-radius:12px;
+    background:linear-gradient(135deg,var(--purple),var(--purple-light));
+    color:#fff;font-size:17px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .cat-main{flex:1;min-width:0}
+  .cat-title{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .cat-title h2{font-size:16.5px;font-weight:700;letter-spacing:-.2px}
+  .cat-badge{
+    font-size:10px;font-weight:700;color:#fff;
+    background:linear-gradient(135deg,var(--purple),var(--purple-light));
+    padding:2px 7px;border-radius:20px;letter-spacing:.3px;
+  }
+  .cat-new{
+    font-size:10px;font-weight:700;color:#fff;
+    background:linear-gradient(135deg,#FF2E4D 0%,#FF6A3D 100%);
+    padding:2px 7px;border-radius:20px;letter-spacing:.3px;
+  }
+  .cat-sub{font-size:12px;color:#8A8496;margin-top:3px}
+  .cat-arrow{flex-shrink:0;font-size:20px;color:#C9C2D8;font-weight:700}
+
+  /* ---------- 分类内视频页 ---------- */
+  .back{
+    display:inline-flex;align-items:center;gap:4px;
+    font-size:13.5px;font-weight:700;color:#7B2FF7;
+    background:#EDE8F6;border:none;border-radius:10px;
+    padding:9px 14px;margin:12px 4px 4px;cursor:pointer;
+  }
+  .sec{padding-top:10px}
   .sec-head{display:flex;align-items:center;gap:8px;padding:0 4px 8px}
   .sec-head .bar{
     width:3px;height:14px;border-radius:2px;flex-shrink:0;
@@ -96,13 +141,7 @@
 
   .updated{color:#FF4A2E;font-weight:700}
 
-  /* 两页切换标签 */
-  .tabs{display:flex;gap:8px;padding:10px 4px 2px}
-  .tab{
-    flex:1;text-align:center;font-size:13px;font-weight:700;text-decoration:none;
-    padding:9px 0;border-radius:10px;color:#7A7288;background:#EDE8F6;
-  }
-  .tab.active{color:#fff;background:linear-gradient(135deg,var(--purple),var(--purple-light))}
+  .hidden{display:none !important}
 
   @media(min-width:700px){
     .wrap{padding:0 20px 40px}
@@ -122,35 +161,95 @@
     <a class="tab" href="teach.html">视频教学合集</a>
   </nav>
 
-  <div id="sections"></div>
+  <!-- 分类选择页 -->
+  <div id="viewCats">
+    <div class="cat-hint">先选想看的分类，点进去看视频</div>
+    <div id="cats"></div>
+  </div>
+
+  <!-- 分类内视频页 -->
+  <div id="viewVideos" class="hidden">
+    <button class="back" id="backBtn">← 返回分类</button>
+    <div class="sec">
+      <div class="sec-head">
+        <span class="bar"></span>
+        <h2 id="secLabel"></h2>
+        <span class="badge" id="secBadge"></span>
+        <span class="cnt" id="secCnt"></span>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </div>
 
   <footer>内部对标素材，请勿外传</footer>
 </div>
 
 <script src="data.js"></script>
 <script>
-  var sections = document.getElementById("sections");
   var BATCHES = window.BATCHES || [];
   var total = 0;
+  var bySlug = {};
 
-  BATCHES.forEach(function (batch, bi) {
+  BATCHES.forEach(function (batch) {
     total += batch.count;
+    bySlug[batch.slug] = batch;
+  });
+  document.getElementById("total").textContent = total;
 
-    var sec = document.createElement("section");
-    sec.className = "sec";
+  // 页头补充「本轮更新」信息
+  var NEW_COUNT = window.NEW_COUNT || 0;
+  if (NEW_COUNT > 0) {
+    var d = window.UPDATED || "";
+    var short = d.length === 10 ? d.slice(5) : d;
+    document.getElementById("newline").innerHTML =
+      " · " + short + " 更新，<span class=\"updated\">新增 " + NEW_COUNT + " 条</span>";
+  }
 
-    var head = document.createElement("div");
-    head.className = "sec-head";
-    head.innerHTML =
-      '<span class="bar"></span>' +
-      "<h2>" + batch.label + "</h2>" +
-      (batch.badge ? '<span class="badge">' + batch.badge + "</span>" : "") +
-      '<span class="cnt">' + batch.count + " 条</span>";
-    sec.appendChild(head);
+  // ---------- 分类选择页 ----------
+  var catsBox = document.getElementById("cats");
+  BATCHES.forEach(function (batch, bi) {
+    var newCnt = 0;
+    batch.items.forEach(function (it) { if (it.isNew) newCnt++; });
 
-    var grid = document.createElement("div");
-    grid.className = "grid";
-    sec.appendChild(grid);
+    var card = document.createElement("div");
+    card.className = "cat";
+    card.innerHTML =
+      '<div class="cat-icon">' + (bi + 1) + "</div>" +
+      '<div class="cat-main">' +
+        '<div class="cat-title">' +
+          "<h2>" + batch.label + "</h2>" +
+          (batch.badge ? '<span class="cat-badge">' + batch.badge + "</span>" : "") +
+          (newCnt > 0 ? '<span class="cat-new">新 ' + newCnt + "</span>" : "") +
+        "</div>" +
+        '<div class="cat-sub">共 ' + batch.count + " 条视频" +
+          (newCnt > 0 ? " · 本轮新增 " + newCnt + " 条" : "") +
+        "</div>" +
+      "</div>" +
+      '<div class="cat-arrow">›</div>';
+
+    card.addEventListener("click", function () {
+      openCategory(batch.slug);
+    });
+    catsBox.appendChild(card);
+  });
+
+  // ---------- 分类内视频页 ----------
+  function openCategory(slug) {
+    var batch = bySlug[slug];
+    if (!batch) return;
+
+    document.getElementById("secLabel").textContent = batch.label;
+    var badge = document.getElementById("secBadge");
+    if (batch.badge) {
+      badge.textContent = batch.badge;
+      badge.style.display = "";
+    } else {
+      badge.style.display = "none";
+    }
+    document.getElementById("secCnt").textContent = batch.count + " 条";
+
+    var grid = document.getElementById("grid");
+    grid.innerHTML = "";
 
     batch.items.forEach(function (item) {
       var wrap = document.createElement("div");
@@ -159,9 +258,8 @@
       var cell = document.createElement("div");
       cell.className = "cell";
 
-      // 关键修复：src 直接写在标签上，不在点击时才赋值
-      // 微信内置浏览器里"运行时赋值 + 立即 play()"会静默失败
-      // preload 用 none：首屏不预载 9 个视频，只加载封面，弱网下更稳
+      // src 直接写在标签上（微信内置浏览器运行时赋值会静默失败）
+      // preload none：只加载封面，弱网更稳
       var video = document.createElement("video");
       video.setAttribute("controls", "");
       video.setAttribute("controlsList", "nodownload");
@@ -174,7 +272,6 @@
       video.setAttribute("poster", item.poster);
       video.setAttribute("src", item.src);
 
-      // 一条播放时暂停其它，只调用 pause()，不主动 play()，避免被拦截
       video.addEventListener("play", function () {
         var all = document.querySelectorAll("video");
         for (var k = 0; k < all.length; k++) {
@@ -184,7 +281,6 @@
 
       cell.appendChild(video);
 
-      // 本轮新增的标「新」，证明是这次更新才发的对标视频
       if (item.isNew) {
         var tag = document.createElement("span");
         tag.className = "new-tag";
@@ -196,18 +292,25 @@
       grid.appendChild(wrap);
     });
 
-    sections.appendChild(sec);
-  });
+    document.getElementById("viewCats").className = "hidden";
+    document.getElementById("viewVideos").className = "";
+    window.scrollTo(0, 0);
+    if (location.hash !== "#" + slug) location.hash = slug;
+  }
 
-  document.getElementById("total").textContent = total;
+  function showCats() {
+    document.getElementById("viewVideos").className = "hidden";
+    document.getElementById("viewCats").className = "";
+    if (location.hash) location.hash = "";
+    window.scrollTo(0, 0);
+  }
 
-  // 页头补充「本轮更新」信息，让代理一眼看出有新内容
-  var NEW_COUNT = window.NEW_COUNT || 0;
-  if (NEW_COUNT > 0) {
-    var d = window.UPDATED || "";
-    var short = d.length === 10 ? d.slice(5) : d;
-    document.getElementById("newline").innerHTML =
-      " · " + short + " 更新，<span class=\"updated\">新增 " + NEW_COUNT + " 条</span>";
+  document.getElementById("backBtn").addEventListener("click", showCats);
+
+  // 直接带 #slug 打开时进入对应分类（刷新/分享不丢位置）
+  var initHash = location.hash.replace("#", "");
+  if (initHash && bySlug[initHash]) {
+    openCategory(initHash);
   }
 </script>
 </body>
