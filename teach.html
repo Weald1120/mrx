@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>视频教学合集</title>
+<style>
+  :root{
+    --purple-deep:#4A1D8F;
+    --purple:#7B2FF7;
+    --purple-light:#A855F7;
+    --ink:#1A1523;
+    --bg:#F7F5FB;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;
+    background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 8px 32px}
+
+  header{
+    background:linear-gradient(135deg,var(--purple-deep) 0%,var(--purple) 55%,var(--purple-light) 100%);
+    color:#fff;padding:18px 16px 16px;margin:0 -8px 4px;border-radius:0 0 20px 20px;
+  }
+  header h1{font-size:19px;font-weight:700;letter-spacing:-.3px;margin-bottom:2px}
+  header p{font-size:12px;opacity:.85}
+
+  /* 两页切换标签 */
+  .tabs{display:flex;gap:8px;padding:10px 4px 2px}
+  .tab{
+    flex:1;text-align:center;font-size:13px;font-weight:700;text-decoration:none;
+    padding:9px 0;border-radius:10px;color:#7A7288;background:#EDE8F6;
+  }
+  .tab.active{color:#fff;background:linear-gradient(135deg,var(--purple),var(--purple-light))}
+
+  .sec{padding-top:12px}
+  .sec-head{display:flex;align-items:center;gap:8px;padding:0 4px 8px}
+  .sec-head .bar{
+    width:3px;height:14px;border-radius:2px;flex-shrink:0;
+    background:linear-gradient(180deg,var(--purple),var(--purple-light));
+  }
+  .sec-head h2{font-size:15px;font-weight:700;letter-spacing:-.2px}
+  .sec-head .cnt{margin-left:auto;font-size:11.5px;color:#7A7288}
+
+  /* 教学视频：单列卡片，标题醒目 */
+  .tcard{
+    background:#fff;border-radius:14px;padding:10px 10px 12px;margin-bottom:10px;
+    box-shadow:0 1px 4px rgba(74,29,143,.08);
+  }
+  .tcard-head{display:flex;align-items:center;gap:8px;padding:2px 2px 8px}
+  .tcard-head .no{
+    flex-shrink:0;width:22px;height:22px;border-radius:6px;
+    background:linear-gradient(135deg,var(--purple),var(--purple-light));
+    color:#fff;font-size:12px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .tcard-head h3{font-size:15px;font-weight:700;letter-spacing:-.2px}
+  .tcard-head .dur{
+    margin-left:auto;flex-shrink:0;font-size:11px;color:#8A8496;
+    background:#F1ECF9;border-radius:20px;padding:2px 8px;font-weight:700;
+  }
+  .videobox{
+    position:relative;width:100%;padding-bottom:177.78%;
+    background:#000;border-radius:12px;
+  }
+  video{
+    position:absolute;top:0;left:0;width:100%;height:100%;
+    display:block;background:#000;border-radius:12px;
+    -o-object-fit:contain;object-fit:contain;
+    -webkit-transform:translateZ(0);transform:translateZ(0);
+    -webkit-backface-visibility:hidden;backface-visibility:hidden;
+  }
+
+  footer{text-align:center;font-size:11px;color:#8A8496;margin-top:20px;opacity:.75}
+
+  @media(min-width:700px){
+    .wrap{padding:0 20px 40px}
+    header{margin:0 -20px 4px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>视频教学合集</h1>
+    <p>点视频上的播放键即可观看 · 共 <span id="total">0</span> 条</p>
+  </header>
+
+  <nav class="tabs">
+    <a class="tab" href="index.html">对标视频</a>
+    <a class="tab active" href="teach.html">视频教学合集</a>
+  </nav>
+
+  <div class="sec">
+    <div class="sec-head">
+      <span class="bar"></span>
+      <h2>全部教学</h2>
+      <span class="cnt" id="cnt"></span>
+    </div>
+    <div id="list"></div>
+  </div>
+
+  <footer>内部教学素材，请勿外传</footer>
+</div>
+
+<script src="teach-data.js"></script>
+<script>
+  var list = document.getElementById("list");
+  var TEACH = window.TEACH || [];
+
+  TEACH.forEach(function (item, i) {
+    var card = document.createElement("div");
+    card.className = "tcard";
+
+    var head = document.createElement("div");
+    head.className = "tcard-head";
+    head.innerHTML =
+      '<span class="no">' + (i + 1) + "</span>" +
+      "<h3>" + item.title + "</h3>" +
+      (item.duration ? '<span class="dur">' + item.duration + "</span>" : "");
+    card.appendChild(head);
+
+    var box = document.createElement("div");
+    box.className = "videobox";
+
+    var video = document.createElement("video");
+    video.setAttribute("controls", "");
+    video.setAttribute("controlsList", "nodownload");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+    video.setAttribute("x5-playsinline", "true");
+    video.setAttribute("x5-video-player-type", "h5");
+    video.setAttribute("x5-video-player-fullscreen", "true");
+    video.setAttribute("preload", "none");
+    if (item.poster) video.setAttribute("poster", item.poster);
+    video.setAttribute("src", item.src);
+
+    video.addEventListener("play", function () {
+      var all = document.querySelectorAll("video");
+      for (var k = 0; k < all.length; k++) {
+        if (all[k] !== video) all[k].pause();
+      }
+    });
+
+    box.appendChild(video);
+    card.appendChild(box);
+    list.appendChild(card);
+  });
+
+  document.getElementById("total").textContent = TEACH.length;
+  document.getElementById("cnt").textContent = TEACH.length + " 条";
+</script>
+</body>
+</html>

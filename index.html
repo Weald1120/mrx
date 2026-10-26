@@ -96,6 +96,14 @@
 
   .updated{color:#FF4A2E;font-weight:700}
 
+  /* 两页切换标签 */
+  .tabs{display:flex;gap:8px;padding:10px 4px 2px}
+  .tab{
+    flex:1;text-align:center;font-size:13px;font-weight:700;text-decoration:none;
+    padding:9px 0;border-radius:10px;color:#7A7288;background:#EDE8F6;
+  }
+  .tab.active{color:#fff;background:linear-gradient(135deg,var(--purple),var(--purple-light))}
+
   @media(min-width:700px){
     .wrap{padding:0 20px 40px}
     header{margin:0 -20px 4px}
@@ -108,6 +116,11 @@
     <h1>迷人秀对标视频</h1>
     <p>点视频上的播放键即可观看 · 共 <span id="total">0</span> 条<span id="newline"></span></p>
   </header>
+
+  <nav class="tabs">
+    <a class="tab active" href="index.html">对标视频</a>
+    <a class="tab" href="teach.html">视频教学合集</a>
+  </nav>
 
   <div id="sections"></div>
 
