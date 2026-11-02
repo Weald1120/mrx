@@ -1,13 +1,18 @@
-window.UPDATED = "2026-10-30";
-window.NEW_COUNT = 2;
+window.UPDATED = "2026-11-02";
+window.NEW_COUNT = 6;
 window.BATCHES = [
   {
     label: "强烈建议拍摄",
     slug: "must-shoot",
-    count: 28,
+    count: 34,
     badge: "主推",
     items: [
-      { src: "videos/must-shoot/28.mp4", poster: "covers/must-shoot/28.jpg", isNew: true },
+      { src: "videos/must-shoot/29.mp4", poster: "covers/must-shoot/29.jpg", isNew: true },
+      { src: "videos/must-shoot/30.mp4", poster: "covers/must-shoot/30.jpg", isNew: true },
+      { src: "videos/must-shoot/31.mp4", poster: "covers/must-shoot/31.jpg", isNew: true },
+      { src: "videos/must-shoot/32.mp4", poster: "covers/must-shoot/32.jpg", isNew: true },
+      { src: "videos/must-shoot/33.mp4", poster: "covers/must-shoot/33.jpg", isNew: true },
+      { src: "videos/must-shoot/34.mp4", poster: "covers/must-shoot/34.jpg", isNew: true },
       { src: "videos/must-shoot/01.mp4", poster: "covers/must-shoot/01.jpg" },
       { src: "videos/must-shoot/02.mp4", poster: "covers/must-shoot/02.jpg" },
       { src: "videos/must-shoot/03.mp4", poster: "covers/must-shoot/03.jpg" },
@@ -35,6 +40,7 @@ window.BATCHES = [
       { src: "videos/must-shoot/25.mp4", poster: "covers/must-shoot/25.jpg" },
       { src: "videos/must-shoot/26.mp4", poster: "covers/must-shoot/26.jpg" },
       { src: "videos/must-shoot/27.mp4", poster: "covers/must-shoot/27.jpg" },
+      { src: "videos/must-shoot/28.mp4", poster: "covers/must-shoot/28.jpg" },
     ]
   },
   {
@@ -43,10 +49,10 @@ window.BATCHES = [
     count: 4,
     badge: "",
     items: [
-      { src: "videos/slim/04.mp4", poster: "covers/slim/04.jpg", isNew: true },
       { src: "videos/slim/01.mp4", poster: "covers/slim/01.jpg" },
       { src: "videos/slim/02.mp4", poster: "covers/slim/02.jpg" },
       { src: "videos/slim/03.mp4", poster: "covers/slim/03.jpg" },
+      { src: "videos/slim/04.mp4", poster: "covers/slim/04.jpg" },
     ]
   },
   {
