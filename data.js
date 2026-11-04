@@ -1,18 +1,16 @@
-window.UPDATED = "2026-11-02";
-window.NEW_COUNT = 6;
+window.UPDATED = "2026-11-04";
+window.NEW_COUNT = 4;
 window.BATCHES = [
   {
     label: "强烈建议拍摄",
     slug: "must-shoot",
-    count: 34,
+    count: 38,
     badge: "主推",
     items: [
-      { src: "videos/must-shoot/29.mp4", poster: "covers/must-shoot/29.jpg", isNew: true },
-      { src: "videos/must-shoot/30.mp4", poster: "covers/must-shoot/30.jpg", isNew: true },
-      { src: "videos/must-shoot/31.mp4", poster: "covers/must-shoot/31.jpg", isNew: true },
-      { src: "videos/must-shoot/32.mp4", poster: "covers/must-shoot/32.jpg", isNew: true },
-      { src: "videos/must-shoot/33.mp4", poster: "covers/must-shoot/33.jpg", isNew: true },
-      { src: "videos/must-shoot/34.mp4", poster: "covers/must-shoot/34.jpg", isNew: true },
+      { src: "videos/must-shoot/35.mp4", poster: "covers/must-shoot/35.jpg", isNew: true },
+      { src: "videos/must-shoot/36.mp4", poster: "covers/must-shoot/36.jpg", isNew: true },
+      { src: "videos/must-shoot/37.mp4", poster: "covers/must-shoot/37.jpg", isNew: true },
+      { src: "videos/must-shoot/38.mp4", poster: "covers/must-shoot/38.jpg", isNew: true },
       { src: "videos/must-shoot/01.mp4", poster: "covers/must-shoot/01.jpg" },
       { src: "videos/must-shoot/02.mp4", poster: "covers/must-shoot/02.jpg" },
       { src: "videos/must-shoot/03.mp4", poster: "covers/must-shoot/03.jpg" },
@@ -41,6 +39,12 @@ window.BATCHES = [
       { src: "videos/must-shoot/26.mp4", poster: "covers/must-shoot/26.jpg" },
       { src: "videos/must-shoot/27.mp4", poster: "covers/must-shoot/27.jpg" },
       { src: "videos/must-shoot/28.mp4", poster: "covers/must-shoot/28.jpg" },
+      { src: "videos/must-shoot/29.mp4", poster: "covers/must-shoot/29.jpg" },
+      { src: "videos/must-shoot/30.mp4", poster: "covers/must-shoot/30.jpg" },
+      { src: "videos/must-shoot/31.mp4", poster: "covers/must-shoot/31.jpg" },
+      { src: "videos/must-shoot/32.mp4", poster: "covers/must-shoot/32.jpg" },
+      { src: "videos/must-shoot/33.mp4", poster: "covers/must-shoot/33.jpg" },
+      { src: "videos/must-shoot/34.mp4", poster: "covers/must-shoot/34.jpg" },
     ]
   },
   {
