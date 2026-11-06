@@ -1,16 +1,16 @@
-window.UPDATED = "2026-11-04";
+window.UPDATED = "2026-11-06";
 window.NEW_COUNT = 4;
 window.BATCHES = [
   {
     label: "强烈建议拍摄",
     slug: "must-shoot",
-    count: 38,
+    count: 42,
     badge: "主推",
     items: [
-      { src: "videos/must-shoot/35.mp4", poster: "covers/must-shoot/35.jpg", isNew: true },
-      { src: "videos/must-shoot/36.mp4", poster: "covers/must-shoot/36.jpg", isNew: true },
-      { src: "videos/must-shoot/37.mp4", poster: "covers/must-shoot/37.jpg", isNew: true },
-      { src: "videos/must-shoot/38.mp4", poster: "covers/must-shoot/38.jpg", isNew: true },
+      { src: "videos/must-shoot/39.mp4", poster: "covers/must-shoot/39.jpg", isNew: true },
+      { src: "videos/must-shoot/40.mp4", poster: "covers/must-shoot/40.jpg", isNew: true },
+      { src: "videos/must-shoot/41.mp4", poster: "covers/must-shoot/41.jpg", isNew: true },
+      { src: "videos/must-shoot/42.mp4", poster: "covers/must-shoot/42.jpg", isNew: true },
       { src: "videos/must-shoot/01.mp4", poster: "covers/must-shoot/01.jpg" },
       { src: "videos/must-shoot/02.mp4", poster: "covers/must-shoot/02.jpg" },
       { src: "videos/must-shoot/03.mp4", poster: "covers/must-shoot/03.jpg" },
@@ -45,6 +45,10 @@ window.BATCHES = [
       { src: "videos/must-shoot/32.mp4", poster: "covers/must-shoot/32.jpg" },
       { src: "videos/must-shoot/33.mp4", poster: "covers/must-shoot/33.jpg" },
       { src: "videos/must-shoot/34.mp4", poster: "covers/must-shoot/34.jpg" },
+      { src: "videos/must-shoot/35.mp4", poster: "covers/must-shoot/35.jpg" },
+      { src: "videos/must-shoot/36.mp4", poster: "covers/must-shoot/36.jpg" },
+      { src: "videos/must-shoot/37.mp4", poster: "covers/must-shoot/37.jpg" },
+      { src: "videos/must-shoot/38.mp4", poster: "covers/must-shoot/38.jpg" },
     ]
   },
   {
