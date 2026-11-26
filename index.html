@@ -372,6 +372,12 @@
     box-shadow:0 3px 9px rgba(var(--hot-rgb),.30);
     pointer-events:none;animation:tagPulse 2.6s ease-in-out infinite;
   }
+  /* 置顶：不用红色，跟「新」区分开；深色底在浅深封面上都压得住 */
+  .new-tag.pin-tag{
+    background:linear-gradient(140deg,var(--accent) 0%,var(--accent-d) 100%);
+    box-shadow:0 2px 9px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.20);
+    animation:none;
+  }
 
   /* 播放遮罩：点一下缩放淡出，播放键放大消散 */
   .veil{
@@ -861,7 +867,12 @@
 
       cell.appendChild(video);
       cell.appendChild(veil);
-      if (item.isNew) {
+      if (item.pinned) {
+        // 置顶优先显示，不再叠一个「新」，避免两个角标抢位置
+        var ptag = document.createElement("span");
+        ptag.className = "new-tag pin-tag"; ptag.textContent = "置顶";
+        cell.appendChild(ptag);
+      } else if (item.isNew) {
         var tag = document.createElement("span");
         tag.className = "new-tag"; tag.textContent = "新";
         cell.appendChild(tag);
