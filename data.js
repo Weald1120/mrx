@@ -1,17 +1,16 @@
-window.UPDATED = "2026-11-18";
-window.NEW_COUNT = 7;
+window.UPDATED = "2026-11-26";
+window.NEW_COUNT = 5;
 window.BATCHES = [
   {
     label: "强烈建议拍摄",
     slug: "must-shoot",
-    count: 47,
+    count: 51,
     badge: "主推",
     items: [
-      { src: "videos/must-shoot/43.mp4", poster: "covers/must-shoot/43.jpg", author: "75769554173", isNew: true },
-      { src: "videos/must-shoot/44.mp4", poster: "covers/must-shoot/44.jpg", isNew: true },
-      { src: "videos/must-shoot/45.mp4", poster: "covers/must-shoot/45.jpg", author: "yuanzai83327", isNew: true },
-      { src: "videos/must-shoot/46.mp4", poster: "covers/must-shoot/46.jpg", author: "yuanzai83327", isNew: true },
-      { src: "videos/must-shoot/47.mp4", poster: "covers/must-shoot/47.jpg", author: "74051724519", isNew: true },
+      { src: "videos/must-shoot/49.mp4", poster: "covers/must-shoot/49.jpg", author: "27492592917", pinned: true, isNew: true },
+      { src: "videos/must-shoot/48.mp4", poster: "covers/must-shoot/48.jpg", isNew: true },
+      { src: "videos/must-shoot/50.mp4", poster: "covers/must-shoot/50.jpg", author: "53719811645", isNew: true },
+      { src: "videos/must-shoot/51.mp4", poster: "covers/must-shoot/51.jpg", author: "74051724519", isNew: true },
       { src: "videos/must-shoot/01.mp4", poster: "covers/must-shoot/01.jpg" },
       { src: "videos/must-shoot/02.mp4", poster: "covers/must-shoot/02.jpg" },
       { src: "videos/must-shoot/03.mp4", poster: "covers/must-shoot/03.jpg" },
@@ -54,19 +53,25 @@ window.BATCHES = [
       { src: "videos/must-shoot/40.mp4", poster: "covers/must-shoot/40.jpg" },
       { src: "videos/must-shoot/41.mp4", poster: "covers/must-shoot/41.jpg" },
       { src: "videos/must-shoot/42.mp4", poster: "covers/must-shoot/42.jpg" },
+      { src: "videos/must-shoot/43.mp4", poster: "covers/must-shoot/43.jpg", author: "75769554173" },
+      { src: "videos/must-shoot/44.mp4", poster: "covers/must-shoot/44.jpg" },
+      { src: "videos/must-shoot/45.mp4", poster: "covers/must-shoot/45.jpg", author: "yuanzai83327" },
+      { src: "videos/must-shoot/46.mp4", poster: "covers/must-shoot/46.jpg", author: "yuanzai83327" },
+      { src: "videos/must-shoot/47.mp4", poster: "covers/must-shoot/47.jpg", author: "74051724519" },
     ]
   },
   {
     label: "减脂逆袭",
     slug: "slim",
-    count: 5,
+    count: 6,
     badge: "",
     items: [
-      { src: "videos/slim/05.mp4", poster: "covers/slim/05.jpg", author: "dami4280", isNew: true },
+      { src: "videos/slim/06.mp4", poster: "covers/slim/06.jpg", author: "46257536391", isNew: true },
       { src: "videos/slim/01.mp4", poster: "covers/slim/01.jpg" },
       { src: "videos/slim/02.mp4", poster: "covers/slim/02.jpg" },
       { src: "videos/slim/03.mp4", poster: "covers/slim/03.jpg" },
       { src: "videos/slim/04.mp4", poster: "covers/slim/04.jpg" },
+      { src: "videos/slim/05.mp4", poster: "covers/slim/05.jpg", author: "dami4280" },
     ]
   },
   {
@@ -75,12 +80,12 @@ window.BATCHES = [
     count: 6,
     badge: "",
     items: [
-      { src: "videos/casual/06.mp4", poster: "covers/casual/06.jpg", author: "29830295940", isNew: true },
       { src: "videos/casual/01.mp4", poster: "covers/casual/01.jpg" },
       { src: "videos/casual/02.mp4", poster: "covers/casual/02.jpg" },
       { src: "videos/casual/03.mp4", poster: "covers/casual/03.jpg" },
       { src: "videos/casual/04.mp4", poster: "covers/casual/04.jpg" },
       { src: "videos/casual/05.mp4", poster: "covers/casual/05.jpg" },
+      { src: "videos/casual/06.mp4", poster: "covers/casual/06.jpg", author: "29830295940" },
     ]
   },
   {
